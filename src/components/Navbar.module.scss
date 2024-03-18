@@ -1,0 +1,19 @@
+.menu{
+  background-color: #e9d925;
+  font-size: 28px;
+  li{
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 600;
+    &:hover{
+      a{
+        color: #77953D;
+      }
+
+    }
+  }
+}
+
+.active{
+  text-decoration: underline;
+}
