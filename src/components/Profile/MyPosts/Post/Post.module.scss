@@ -1,0 +1,47 @@
+.post{
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #ffecb8;
+}
+.likes{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.text{
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+.likes_num{
+  font-weight: bold;
+  color: darkred;
+  font-size: 1.4em;
+}
+.heart {
+  position: relative;
+  width: 10px;
+  height: 17.5px;
+  background-color: red;
+  box-shadow: -1px 0px 2px #444;
+
+  border-radius: 50px 50px 0 0;
+
+  transform: rotate(315deg);
+  &:before{
+    position: absolute;
+    width: 17.5px;
+    height: 10px;
+    left: 0;
+    bottom: 0;
+    content: "";
+    background-color: red;
+    box-shadow: 0px 3px 3px #444444;
+    -webkit-border-radius: 50px 50px 0 0;
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 0 50px 50px 0;
+  }
+  &:hover, &:hover:before{
+    box-shadow:none;
+  }
+}

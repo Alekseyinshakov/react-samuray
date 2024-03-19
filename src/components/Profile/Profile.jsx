@@ -1,4 +1,5 @@
 import styles from "./Profile.module.scss"
+import {MyPosts} from "./MyPosts/MyPosts";
 
 export function Profile() {
     return (
@@ -26,20 +27,7 @@ export function Profile() {
                 </div>
             </div>
 
-            <div className={styles.wall}>
-                <div className={styles.wall_title}>
-                    My posts
-                </div>
-                <form className={styles.new_post}>
-                    <textarea className={styles.new_post_input}></textarea>
-                    <button className={styles.send_new_post}>Send</button>
-                </form>
-                <div className="posts">
-                    <div className={styles.post}>Post1</div>
-                    <div className={styles.post}>Post2</div>
-                    <div className={styles.post}>Post3</div>
-                </div>
-            </div>
+            <MyPosts />
 
 
         </div>
