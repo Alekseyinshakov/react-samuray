@@ -17,15 +17,15 @@
 }
 
 .new_post_input{
-  border: #e9d925 solid 1px;
   display: block;
   width: 100%;
   height: 100px;
   background-color: #fff;
   margin-bottom: 15px;
-  outline-color: #e9d925;
+  outline: none;
   padding: 8px 12px;
   font-size: 22px;
+  resize: none;
 }
 
 .send_new_post{

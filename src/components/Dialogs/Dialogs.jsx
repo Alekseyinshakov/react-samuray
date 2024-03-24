@@ -1,39 +1,12 @@
 import styles from './Dialogs.module.scss';
-import {NavLink} from "react-router-dom";
+import {Message} from "./Message/Message";
+import {DialogItem} from "./DialogItem/DialogItem";
+import {NewMessage} from "./NewMessage/NewMessage";
 
-function DialogItem(props) {
-    return (
-        <li>
-            <NavLink to={"/dialogs/" + props.id} className="dialog_item">{props.name}</NavLink>
-        </li>
-    )
-}
+export function Dialogs(props) {
 
-function Message(props) {
-    return (
-        <div className="message">
-            {props.text}
-        </div>
-    )
-}
-
-export function Dialogs() {
-
-    let dialogsData = [
-        {id: 1, name: "Dima"},
-        {id: 2, name: "Sveta"},
-        {id: 3, name: "Alex"},
-        {id: 4, name: "Arnold"},
-    ]
-
-    let messagesData = [
-        {id: 1, message: "Привет. Первое15555 сообщение"},
-        {id: 2, message: "Привет. Второе2555 сообщение"},
-        {id: 3, message: "Привет. Третье3555 сообщение"},
-    ]
-
-    let dialogs= dialogsData.map(item => <DialogItem id={item.id} name={item.name}/>)
-    let messages = messagesData.map(message => <Message text = {message.message}/>)
+    let dialogs= props.data.dialogsData.map(item => <DialogItem id={item.id} name={item.name}/>)
+    let messages = props.data.messagesData.map(message => <Message isMy={message.my} text = {message.message}/>)
 
     return (
         <div className={styles.main}>
@@ -42,12 +15,13 @@ export function Dialogs() {
                     {dialogs}
                 </ul>
             </div>
-            <div className="messages">
+            <div className={styles.messages}>
+                <div className={styles.messagesWrap}>
+                    {messages}
+                </div>
 
-                {messages}
-
+                <NewMessage />
             </div>
-
         </div>
     )
 }

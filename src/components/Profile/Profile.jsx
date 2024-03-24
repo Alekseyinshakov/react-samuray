@@ -2,7 +2,7 @@ import styles from "./Profile.module.scss"
 import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 
-export function Profile() {
+export function Profile(props) {
     return (
         <div className={styles.content}>
 
@@ -11,9 +11,7 @@ export function Profile() {
                 </div>
 
             <ProfileInfo />
-
-            <MyPosts />
-
+            <MyPosts posts = {props.data.posts} />
 
         </div>
     )

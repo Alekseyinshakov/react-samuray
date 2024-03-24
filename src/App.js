@@ -5,7 +5,7 @@ import {Navbar} from "./components/Navbar/Navbar";
 import {Profile} from "./components/Profile/Profile";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 
-function App() {
+function App(props) {
     return (
         <BrowserRouter>
             <div className="container">
@@ -14,8 +14,8 @@ function App() {
                 {/*<Profile />*/}
                 {/*<Dialogs />*/}
                 <Routes>
-                    <Route path="/profile" element={<Profile/>}/>
-                    <Route path="/dialogs/*" element={<Dialogs/>}/>
+                    <Route path="/profile" element={<Profile data={props.state.profilePage} />}/>
+                    <Route path="/dialogs/*" element={<Dialogs data={props.state.dialogPage} />}/>
                 </Routes>
             </div>
         </BrowserRouter>

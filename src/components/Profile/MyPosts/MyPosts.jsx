@@ -1,42 +1,30 @@
 import styles from "./MyPosts.module.scss";
 import {Post} from "./Post/Post";
+import React from "react";
 
-export function MyPosts() {
-
-    let postData = [
-        {
-            id: 1,
-            message: "17 уроков прошёл на изи, я красавчик",
-            likes: 15
-        },
-        {
-            id: 2,
-            message: "Изучил пропсы, компоненты, импорты, экспорты!",
-            likes: 25
-        },
-        {
-            id: 3,
-            message: "Знаю функции, стрелочные, обычные, анонимные!!",
-            likes: 35
-        }
-    ];
-
-    let posts = postData.map(post => <Post text={post.message} likes={post.likes}/>)
+export function MyPosts(props) {
 
 
+    let posts = props.posts.map(post => <Post text={post.message} likes={post.likes}/>)
+
+    let newPostTextarea = React.createRef()
+
+    let addPost = () => {
+        let text = newPostTextarea.current.value;
+        alert(text)
+    }
 
     return (
         <div className={styles.wall}>
             <div className={styles.wall_title}>
                 My posts
             </div>
-            <form className={styles.new_post}>
-                <textarea className={styles.new_post_input}></textarea>
-                <button className={styles.send_new_post}>Send</button>
-            </form>
+            <div className={styles.new_post}>
+                <textarea ref={newPostTextarea} className={styles.new_post_input}></textarea>
+                <button onClick={addPost} className={styles.send_new_post}>Send</button>
+            </div>
             <div className="posts">
                 {posts}
-
             </div>
         </div>
     )

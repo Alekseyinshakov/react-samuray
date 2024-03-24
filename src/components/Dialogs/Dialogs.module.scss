@@ -1,12 +1,21 @@
 .main{
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 5fr;
 }
 
 .dialog_items{
   padding: 20px;
   padding-top: 0;
-  li{
-    margin-top: 20px;
-  }
+  background-color: #cbffc3;
+}
+
+.messages{
+  display: flex;
+  flex-direction: column;
+}
+
+.messagesWrap{
+  padding-right: 30px;
+  padding-left: 30px;
+  flex-grow: 1;
 }
