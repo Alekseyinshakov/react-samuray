@@ -11,7 +11,7 @@ export function MyPosts(props) {
 
     let addPost = () => {
         let text = newPostTextarea.current.value;
-        alert(text)
+        props.addPost(text)
     }
 
     return (

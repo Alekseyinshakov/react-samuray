@@ -11,8 +11,7 @@ export function Profile(props) {
                 </div>
 
             <ProfileInfo />
-            <MyPosts posts = {props.data.posts} />
-
+            <MyPosts addPost={props.addPost} posts = {props.data.posts} />
         </div>
     )
 }

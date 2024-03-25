@@ -35,3 +35,14 @@ export let state = {
     },
     sideBar: {}
 };
+
+export function addPost(message) {
+    state.profilePage.posts.push(
+        {
+            id: 4,
+            message: message,
+            likes: 0
+        }
+    )
+    console.log(state)
+}
