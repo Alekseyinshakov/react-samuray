@@ -14,13 +14,17 @@ export function MyPosts(props) {
         props.addPost(text)
     }
 
+    function onPostChange() {
+        props.changePostText(newPostTextarea.current.value)
+    }
+
     return (
         <div className={styles.wall}>
             <div className={styles.wall_title}>
                 My posts
             </div>
             <div className={styles.new_post}>
-                <textarea ref={newPostTextarea} className={styles.new_post_input}></textarea>
+                <textarea onChange={onPostChange} value={props.newPostText} ref={newPostTextarea} className={styles.new_post_input}></textarea>
                 <button onClick={addPost} className={styles.send_new_post}>Send</button>
             </div>
             <div className="posts">
@@ -28,4 +32,7 @@ export function MyPosts(props) {
             </div>
         </div>
     )
+
+
+
 }

@@ -1,3 +1,5 @@
+
+import {rerenderEntireTree} from "../render";
 export let state = {
     profilePage: {
         posts: [
@@ -16,7 +18,8 @@ export let state = {
                 message: "Знаю функции, стрелочные, обычные, анонимные",
                 likes: 45
             }
-        ]
+        ],
+        newPostText: "React"
     },
     dialogPage: {
         dialogsData: [
@@ -31,7 +34,8 @@ export let state = {
             {id: 3, message: "Моё сообщение ещё раз", my: true},
             {id: 2, message: "Опять не моё"},
             {id: 3, message: "Снова моё сообщение", my: true},
-        ]
+        ],
+        newMessageText: "message1"
     },
     sideBar: {}
 };
@@ -44,5 +48,31 @@ export function addPost(message) {
             likes: 0
         }
     )
-    console.log(state)
+    state.profilePage.newPostText = "";
+    rerenderEntireTree(state);
+};
+
+export function changePostText(text) {
+    state.profilePage.newPostText = text;
+    rerenderEntireTree(state);
 }
+
+export function addMessage(message) {
+    state.dialogPage.messagesData.push(
+        {
+            id: 10,
+            message: state.dialogPage.newMessageText,
+            my: true
+        }
+    );
+    state.dialogPage.newMessageText = ""
+    rerenderEntireTree(state);
+}
+export function changeMessageText(text) {
+    console.log('do')
+    state.dialogPage.newMessageText = text;
+    rerenderEntireTree(state);
+
+}
+
+

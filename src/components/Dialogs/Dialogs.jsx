@@ -20,7 +20,7 @@ export function Dialogs(props) {
                     {messages}
                 </div>
 
-                <NewMessage />
+                <NewMessage addMessage={props.addMessage} newMessageText={props.data.newMessageText} changeMessageText={props.changeMessageText}/>
             </div>
         </div>
     )
