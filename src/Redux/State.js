@@ -1,5 +1,6 @@
-
-import {rerenderEntireTree} from "../render";
+let rerenderEntireTree = function () {
+    console.log('rrET')
+}
 export let state = {
     profilePage: {
         posts: [
@@ -69,10 +70,11 @@ export function addMessage(message) {
     rerenderEntireTree(state);
 }
 export function changeMessageText(text) {
-    console.log('do')
     state.dialogPage.newMessageText = text;
     rerenderEntireTree(state);
 
 }
 
-
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer;
+}
