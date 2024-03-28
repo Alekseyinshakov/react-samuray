@@ -1,8 +1,8 @@
 export let store = {
-    _callSubscriber ()  {
+    _callSubscriber()  {
         console.log('rrET')
     },
-    subscribe (observer) {
+    subscribe(observer) {
         this._callSubscriber = observer;
     },
     _state: {
@@ -44,10 +44,10 @@ export let store = {
         },
         sideBar: {}
     },
-    getState: function (){
+    getState(){
         return this._state;
     },
-    addPost: function (message) {
+    addPost(message) {
         this._state.profilePage.posts.push(
             {
                 id: 4,
@@ -58,11 +58,11 @@ export let store = {
         this._state.profilePage.newPostText = "";
         this._callSubscriber(this._state);
     },
-    changePostText: function (text) {
+    changePostText(text) {
         this._state.profilePage.newPostText = text;
         this._callSubscriber(this._state);
     },
-    addMessage: function () {
+    addMessage() {
         this._state.dialogPage.messagesData.push(
             {
                 id: 10,
@@ -73,7 +73,7 @@ export let store = {
         this._state.dialogPage.newMessageText = ""
         this._callSubscriber(this._state);
     },
-    changeMessageText: function (text) {
+    changeMessageText(text) {
         this._state.dialogPage.newMessageText = text;
         this._callSubscriber(this._state);
     }
