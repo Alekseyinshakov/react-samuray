@@ -79,3 +79,4 @@ export let store = {
     }
 }
 
+window.store = store;
