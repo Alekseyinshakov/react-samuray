@@ -11,10 +11,10 @@ export function Profile(props) {
                 </div>
 
             <ProfileInfo />
-            <MyPosts addPost={props.addPost}
+            <MyPosts dispatch={props.dispatch}
                      posts = {props.data.posts}
                      newPostText={props.data.newPostText}
-                     changePostText = {props.changePostText} />
+                      />
         </div>
     )
 }

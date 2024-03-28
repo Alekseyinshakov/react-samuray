@@ -5,12 +5,14 @@ export function NewMessage(props) {
 
     let newMessageTextarea = React.createRef()
     function addMessage() {
-        props.addMessage()
+        props.dispatch({type: "ADD_MESSAGE"})
     }
 
     function onChangeMessage() {
-        console.log(newMessageTextarea.current.value)
-        props.changeMessageText(newMessageTextarea.current.value);
+        props.dispatch({
+            type: "UPDATE_NEW_MESSAGE_TEXT",
+            text: newMessageTextarea.current.value
+        })
     }
 
     return (

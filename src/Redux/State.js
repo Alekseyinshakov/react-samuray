@@ -47,36 +47,61 @@ export let store = {
     getState(){
         return this._state;
     },
-    addPost(message) {
-        this._state.profilePage.posts.push(
-            {
-                id: 4,
-                message: message,
-                likes: 0
-            }
-        )
-        this._state.profilePage.newPostText = "";
-        this._callSubscriber(this._state);
+    addPost() {
+
     },
     changePostText(text) {
-        this._state.profilePage.newPostText = text;
-        this._callSubscriber(this._state);
+
     },
     addMessage() {
-        this._state.dialogPage.messagesData.push(
-            {
-                id: 10,
-                message: this._state.dialogPage.newMessageText,
-                my: true
-            }
-        );
-        this._state.dialogPage.newMessageText = ""
-        this._callSubscriber(this._state);
+
     },
     changeMessageText(text) {
-        this._state.dialogPage.newMessageText = text;
-        this._callSubscriber(this._state);
+
+    },
+    dispatch(action){
+        switch(action.type) {
+            case 'ADD_POST':
+                console.log('ADD_POST');
+                this._state.profilePage.posts.push(
+                    {
+                        id: 4,
+                        message: this._state.profilePage.newPostText,
+                        likes: 0
+                    }
+                )
+                this._state.profilePage.newPostText = "";
+                this._callSubscriber(this._state);
+                break;
+
+            case 'UPDATE_NEW_POST_TEXT':
+                console.log('UPDATE_NEW_POST_TEXT');
+                this._state.profilePage.newPostText = action.text;
+                this._callSubscriber(this._state);
+                break;
+            case 'ADD_MESSAGE':
+                console.log('ADD_MESSAGE');
+                this._state.dialogPage.messagesData.push(
+                    {
+                        id: 10,
+                        message: this._state.dialogPage.newMessageText,
+                        my: true
+                    }
+                );
+                this._state.dialogPage.newMessageText = ""
+                this._callSubscriber(this._state);
+                break;
+            case 'UPDATE_NEW_MESSAGE_TEXT':
+                console.log('UPDATE_NEW_MESSAGE_TEXT');
+                this._state.dialogPage.newMessageText = action.text;
+                this._callSubscriber(this._state);
+                break;
+            default:
+                console.log(1);
+                break;
+        }
     }
+
 }
 
 window.store = store;

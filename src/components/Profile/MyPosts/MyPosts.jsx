@@ -10,12 +10,11 @@ export function MyPosts(props) {
     let newPostTextarea = React.createRef()
 
     let addPost = () => {
-        let text = newPostTextarea.current.value;
-        props.addPost(text)
+        props.dispatch({type: "ADD_POST"})
     }
 
     function onPostChange() {
-        props.changePostText(newPostTextarea.current.value)
+        props.dispatch({type: "UPDATE_NEW_POST_TEXT", text: newPostTextarea.current.value})
     }
 
     return (
@@ -32,7 +31,5 @@ export function MyPosts(props) {
             </div>
         </div>
     )
-
-
 
 }
