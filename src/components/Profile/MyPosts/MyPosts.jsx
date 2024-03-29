@@ -1,6 +1,9 @@
 import styles from "./MyPosts.module.scss";
 import {Post} from "./Post/Post";
 import React from "react";
+import {createActionAddPost, createActionOnPostChange} from "../../../Redux/State";
+
+
 
 export function MyPosts(props) {
 
@@ -10,11 +13,11 @@ export function MyPosts(props) {
     let newPostTextarea = React.createRef()
 
     let addPost = () => {
-        props.dispatch({type: "ADD_POST"})
+        props.dispatch(createActionAddPost())
     }
 
     function onPostChange() {
-        props.dispatch({type: "UPDATE_NEW_POST_TEXT", text: newPostTextarea.current.value})
+        props.dispatch(createActionOnPostChange(newPostTextarea.current.value))
     }
 
     return (

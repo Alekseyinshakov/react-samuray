@@ -1,18 +1,16 @@
 import styles from "./NewMessage.module.scss";
 import React from "react";
+import {createActionAddMessage, createActionOnChangeMessage} from "../../../Redux/State";
 
 export function NewMessage(props) {
 
     let newMessageTextarea = React.createRef()
     function addMessage() {
-        props.dispatch({type: "ADD_MESSAGE"})
+        props.dispatch(createActionAddMessage())
     }
 
     function onChangeMessage() {
-        props.dispatch({
-            type: "UPDATE_NEW_MESSAGE_TEXT",
-            text: newMessageTextarea.current.value
-        })
+        props.dispatch(createActionOnChangeMessage(newMessageTextarea.current.value))
     }
 
     return (

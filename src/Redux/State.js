@@ -1,3 +1,9 @@
+const ADD_POST = 'ADD_POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
+const ADD_MESSAGE = 'ADD_MESSAGE';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
+
+
 export let store = {
     _callSubscriber()  {
         console.log('rrET')
@@ -62,7 +68,6 @@ export let store = {
     dispatch(action){
         switch(action.type) {
             case 'ADD_POST':
-                console.log('ADD_POST');
                 this._state.profilePage.posts.push(
                     {
                         id: 4,
@@ -75,12 +80,11 @@ export let store = {
                 break;
 
             case 'UPDATE_NEW_POST_TEXT':
-                console.log('UPDATE_NEW_POST_TEXT');
                 this._state.profilePage.newPostText = action.text;
                 this._callSubscriber(this._state);
                 break;
+
             case 'ADD_MESSAGE':
-                console.log('ADD_MESSAGE');
                 this._state.dialogPage.messagesData.push(
                     {
                         id: 10,
@@ -91,8 +95,8 @@ export let store = {
                 this._state.dialogPage.newMessageText = ""
                 this._callSubscriber(this._state);
                 break;
+
             case 'UPDATE_NEW_MESSAGE_TEXT':
-                console.log('UPDATE_NEW_MESSAGE_TEXT');
                 this._state.dialogPage.newMessageText = action.text;
                 this._callSubscriber(this._state);
                 break;
@@ -103,5 +107,32 @@ export let store = {
     }
 
 }
+
+export function createActionAddPost() {
+    return {
+        type: ADD_POST
+    }
+}
+
+export function createActionOnPostChange(message) {
+    return {
+        type: UPDATE_NEW_POST_TEXT,
+        text: message}
+}
+
+export function createActionAddMessage() {
+    return {
+        type: ADD_MESSAGE
+    }
+}
+
+export function createActionOnChangeMessage(message) {
+    return {
+        type: UPDATE_NEW_MESSAGE_TEXT,
+        text: message
+    }
+}
+
+
 
 window.store = store;
