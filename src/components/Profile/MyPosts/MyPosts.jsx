@@ -1,7 +1,7 @@
 import styles from "./MyPosts.module.scss";
 import {Post} from "./Post/Post";
 import React from "react";
-import {createActionAddPost, createActionOnPostChange} from "../../../Redux/State";
+import {createActionAddPost, createActionOnPostChange} from "../../../Redux/profile-reduser";
 
 
 

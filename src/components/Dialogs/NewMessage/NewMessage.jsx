@@ -1,6 +1,6 @@
 import styles from "./NewMessage.module.scss";
 import React from "react";
-import {createActionAddMessage, createActionOnChangeMessage} from "../../../Redux/State";
+import {createActionAddMessage, createActionOnChangeMessage} from "../../../Redux/dialogs-reduser";
 
 export function NewMessage(props) {
 
