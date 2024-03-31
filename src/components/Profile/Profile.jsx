@@ -1,8 +1,9 @@
 import styles from "./Profile.module.scss"
-import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
+import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 
 export function Profile(props) {
+    
     return (
         <div className={styles.content}>
 
@@ -11,10 +12,7 @@ export function Profile(props) {
                 </div>
 
             <ProfileInfo />
-            <MyPosts dispatch={props.dispatch}
-                     posts = {props.data.posts}
-                     newPostText={props.data.newPostText}
-                      />
+            <MyPostsContainer store = {props.store} />
         </div>
     )
 }

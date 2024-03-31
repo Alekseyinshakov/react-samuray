@@ -1,7 +1,7 @@
 import styles from "./MyPosts.module.scss";
 import {Post} from "./Post/Post";
 import React from "react";
-import {createActionAddPost, createActionOnPostChange} from "../../../Redux/profile-reduser";
+
 
 
 
@@ -12,12 +12,12 @@ export function MyPosts(props) {
 
     let newPostTextarea = React.createRef()
 
-    let addPost = () => {
-        props.dispatch(createActionAddPost())
+    let onAddPost = () => {
+        props.addPost();
     }
 
     function onPostChange() {
-        props.dispatch(createActionOnPostChange(newPostTextarea.current.value))
+        props.updateNewPostText(newPostTextarea.current.value)
     }
 
     return (
@@ -27,7 +27,7 @@ export function MyPosts(props) {
             </div>
             <div className={styles.new_post}>
                 <textarea onChange={onPostChange} value={props.newPostText} ref={newPostTextarea} className={styles.new_post_input}></textarea>
-                <button onClick={addPost} className={styles.send_new_post}>Send</button>
+                <button onClick={onAddPost} className={styles.send_new_post}>Send</button>
             </div>
             <div className="posts">
                 {posts}
