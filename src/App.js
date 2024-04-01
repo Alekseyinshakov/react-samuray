@@ -16,9 +16,7 @@ function App(props) {
                 {/*<Dialogs />*/}
                 <Routes>
                     <Route path="/profile" element={<Profile store = {props.store}/>}/>
-                    <Route path="/dialogs/*" element={<Dialogs
-                        data={props.state.dialogPage}
-                        dispatch={props.dispatch}/>}/>
+                    <Route path="/dialogs/*" element={<Dialogs store = {props.store} />}/>
                 </Routes>
             </div>
         </BrowserRouter>

@@ -1,16 +1,15 @@
 import styles from "./NewMessage.module.scss";
 import React from "react";
-import {createActionAddMessage, createActionOnChangeMessage} from "../../../Redux/dialogs-reduser";
 
 export function NewMessage(props) {
 
     let newMessageTextarea = React.createRef()
     function addMessage() {
-        props.dispatch(createActionAddMessage())
+        props.addMessage()
     }
 
     function onChangeMessage() {
-        props.dispatch(createActionOnChangeMessage(newMessageTextarea.current.value))
+        props.updateNewMessageText(newMessageTextarea.current.value)
     }
 
     return (

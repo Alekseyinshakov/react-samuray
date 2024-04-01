@@ -19,6 +19,9 @@ export function MyPostsContainer(props) {
     }
 
     return (
-        <MyPosts updateNewPostText = {updateNewPostText} addPost = {addPost} posts = {state.posts} />
+        <MyPosts updateNewPostText = {updateNewPostText}
+                 addPost = {addPost}
+                 posts = {state.posts}
+                 newPostText = {state.newPostText}/>
     )
 }
