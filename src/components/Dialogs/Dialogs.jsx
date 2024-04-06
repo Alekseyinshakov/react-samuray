@@ -7,8 +7,8 @@ export function Dialogs(props) {
 
 
 
-    let dialogs= props.dialogsData.map(item => <DialogItem id={item.id} name={item.name}/>)
-    let messages = props.messagesData.map(message => <Message isMy={message.my} text = {message.message}/>)
+    let dialogs= props.dialogsData.map(item => <DialogItem id={item.id} key={item.id} name={item.name}/>)
+    let messages = props.messagesData.map(message => <Message isMy={message.my} key={message.id} text = {message.message}/>)
 
     return (
         <div className={styles.main}>

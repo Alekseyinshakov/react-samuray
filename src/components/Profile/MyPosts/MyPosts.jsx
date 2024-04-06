@@ -8,7 +8,7 @@ import React from "react";
 export function MyPosts(props) {
 
 
-    let posts = props.posts.map(post => <Post text={post.message} likes={post.likes}/>)
+    let posts = props.posts.map(post => <Post text={post.message} key={post.id} likes={post.likes}/>)
 
     let newPostTextarea = React.createRef()
 
