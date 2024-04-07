@@ -19,7 +19,13 @@ export function Navbar() {
                         Messages
                     </NavLink>
                 </li>
-                <li><a href="">News</a></li>
+                <li>
+                    <NavLink
+                        className={navData => navData.isActive ? styles.active : styles.item}
+                        to="/users">
+                        Users
+                    </NavLink>
+                </li>
                 <li><a href="">Settings</a></li>
             </ul>
         </nav>

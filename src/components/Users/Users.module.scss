@@ -1,0 +1,72 @@
+.wrap{
+  background-color: yellowgreen;
+  padding: 20px;
+
+
+  width: 100%;
+}
+
+.flex_wrap{
+  display: flex;
+  flex-wrap: wrap;
+  //align-items: self-start  ;
+  justify-content: center;
+}
+
+.user{
+  //height: 100px;
+  width: 650px;
+  background-color: #e9d925;
+  display: flex;
+
+  margin-bottom: 20px;
+
+}
+
+.avatar_wrap{
+  width: 70px;
+  height: 70px;
+  background-color: #fff;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+.col1{
+  background-color: #ffee30;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  button{
+    padding: 5px;
+  }
+}
+.col2 {
+  margin-right: 10px;
+  flex-grow: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.col3{
+  background-color: #ffee30;
+  flex-basis: 120px;
+  padding: 10px;
+}
+
+.name{
+  font-size: 23px;
+}
+
+.status{
+  font-style: italic;
+  color: #444444;
+  font-size: 17px;
+}
+
+.followed{
+  background-color: yellow;
+}
+
+.unfollowed{
+  background-color: #f5d889;
+}
