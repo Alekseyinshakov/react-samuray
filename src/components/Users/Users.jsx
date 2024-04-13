@@ -5,12 +5,13 @@ import noAvatar from './no-avatar.jpg'
 
 
 export class Users extends React.Component{
-    constructor(props) {
-        super(props);
+
+    componentDidMount() {
         axios.get('https://social-network.samuraijs.com/api/1.0/users?count=100').then(responce => {
-            props.setUsers(responce.data.items)
+            this.props.setUsers(responce.data.items)
         })
     }
+
     render() {
         return (
             <div className={styles.wrap}>
