@@ -1,38 +1,17 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 
 
 let initialState = {
     users: [
-        // {
-        //     id: 1,
-        //     name: "Dima",
-        //     status: "status text",
-        //     avatar: "/img/1.jpd",
-        //     country: "Belarus",
-        //     city: "Minsk",
-        //     followed: false
-        // },
-        // {
-        //     id: 2,
-        //     name: "Sasha",
-        //     status: "status text",
-        //     avatar: "/img/1.jpd",
-        //     country: "Belarus",
-        //     city: "Minsk",
-        //     followed: false
-        // },
-        // {
-        //     id: 3,
-        //     name: "Kolya",
-        //     status: "status text",
-        //     avatar: "/img/1.jpd",
-        //     country: "Belarus",
-        //     city: "Minsk",
-        //     followed: false
-        // }
-    ]
+
+    ],
+    totalUsers: 0,
+    pageSize: 100,
+    currentPage: 1
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -68,8 +47,19 @@ const usersReducer = (state = initialState, action) => {
         case SET_USERS:
             return {
                 ...state,
-                users: [...state.users, ...action.users ]
+                users: [...action.users ]
             }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.currentPage
+            }
+        case SET_TOTAL_USERS_COUNT:
+            return {
+                ...state,
+                totalUsers: action.totalUsersCount
+            }
+
         default:
             return state
     }
@@ -93,6 +83,20 @@ export function setUsersCA(users) {
     return {
         type: SET_USERS,
         users: users
+    }
+}
+
+export function setCurrentPageCA(page) {
+    return {
+        type: SET_CURRENT_PAGE,
+        currentPage: page
+    }
+}
+
+export function setTotalUserCountCA(num) {
+    return {
+        type: SET_TOTAL_USERS_COUNT,
+        totalUsersCount: num
     }
 }
 

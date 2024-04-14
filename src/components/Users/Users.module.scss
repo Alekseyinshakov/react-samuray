@@ -70,3 +70,15 @@
 .unfollowed{
   background-color: #f5d889;
 }
+
+.pagination{
+  span{
+    display: inline-block;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+}
+
+.currentPage{
+  font-weight: bold;
+}
