@@ -73,42 +73,42 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-export function followCA(userId) {
+export function follow(userId) {
     return {
         type: FOLLOW,
         userId
     }
 }
 
-export function unfollowCA(userId) {
+export function unfollow(userId) {
     return {
         type: UNFOLLOW,
         userId
     }
 }
 
-export function setUsersCA(users) {
+export function setUsers(users) {
     return {
         type: SET_USERS,
         users: users
     }
 }
 
-export function setCurrentPageCA(page) {
+export function setCurrentPage(page) {
     return {
         type: SET_CURRENT_PAGE,
         currentPage: page
     }
 }
 
-export function setTotalUserCountCA(num) {
+export function setTotalUsersCount(num) {
     return {
         type: SET_TOTAL_USERS_COUNT,
         totalUsersCount: num
     }
 }
 
-export function togglePreloaderCA(boolean) {
+export function togglePreloader(boolean) {
     return {
         type: TOGGLE_PRELOADER,
         isToggle: boolean

@@ -1,11 +1,11 @@
 import {connect} from "react-redux";
 import {
-    followCA,
-    setCurrentPageCA,
-    setTotalUserCountCA,
-    setUsersCA,
-    togglePreloaderCA,
-    unfollowCA
+    follow,
+    setCurrentPage,
+    setTotalUsersCount,
+    setUsers,
+    togglePreloader,
+    unfollow
 } from "../../Redux/users-reduser";
 import React from "react";
 import axios from "axios";
@@ -18,7 +18,7 @@ class UsersContainerAPI extends React.Component {
                 axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`).then(responce => {
             this.props.togglePreloader(false);
             this.props.setUsers(responce.data.items);
-            this.props.setTotalUsers(responce.data.totalCount)
+            this.props.setTotalUsersCount(responce.data.totalCount)
         })
     }
 
@@ -57,29 +57,30 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-
-            dispatch(followCA(userId))
-        },
-        unfollow: (userId) => {
-
-            dispatch(unfollowCA(userId))
-        },
-        setUsers: (users) => {
-            dispatch(setUsersCA(users))
-        },
-        setCurrentPage: (pageNumber) => {
-            dispatch(setCurrentPageCA(pageNumber))
-        },
-        setTotalUsers: (totalUsersCount) => {
-            dispatch(setTotalUserCountCA(totalUsersCount))
-        },
-        togglePreloader: (boolean) => {
-            dispatch(togglePreloaderCA(boolean))
-        }
-
-    }
-}
-export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersContainerAPI)
+// let mapDispatchToProps = (dispatch) => {
+//     return {
+//         follow: (userId) => {
+//
+//             dispatch(followCA(userId))
+//         },
+//         unfollow: (userId) => {
+//
+//             dispatch(unfollowCA(userId))
+//         },
+//         setUsers: (users) => {
+//             dispatch(setUsersCA(users))
+//         },
+//         setCurrentPage: (pageNumber) => {
+//             dispatch(setCurrentPageCA(pageNumber))
+//         },
+//         setTotalUsers: (totalUsersCount) => {
+//             dispatch(setTotalUserCountCA(totalUsersCount))
+//         },
+//         togglePreloader: (boolean) => {
+//             dispatch(togglePreloaderCA(boolean))
+//         }
+//
+//     }
+// }
+export const UsersContainer = connect(mapStateToProps,
+    {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, togglePreloader})(UsersContainerAPI)
