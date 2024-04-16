@@ -1,6 +1,7 @@
 import styles from "./Users.module.scss";
 import noAvatar from "./no-avatar.jpg";
 import React from "react";
+import {Preloader} from "../common/Preloader/Preloader";
 
 export const Users = (props) => {
     // debugger;
@@ -19,6 +20,8 @@ export const Users = (props) => {
                 })}
 
             </div>
+            { props.isLoading ? <Preloader /> : null}
+
             <div className={styles.flex_wrap}>
 
                 {props.users.map(user => {
