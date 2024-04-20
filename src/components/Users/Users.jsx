@@ -2,6 +2,7 @@ import styles from "./Users.module.scss";
 import noAvatar from "./no-avatar.jpg";
 import React from "react";
 import {Preloader} from "../common/Preloader/Preloader";
+import {NavLink} from "react-router-dom";
 
 export const Users = (props) => {
     // debugger;
@@ -16,11 +17,13 @@ export const Users = (props) => {
         <div className={styles.wrap}>
             <div className={styles.pagination}>
                 {pages.map(item => {
-                    return <span onClick={(e) => {props.onPageChanged(item)}} className={item === props.currentPage && styles.currentPage}>{item}</span>
+                    return <span onClick={(e) => {
+                        props.onPageChanged(item)
+                    }} className={item === props.currentPage && styles.currentPage}>{item}</span>
                 })}
 
             </div>
-            { props.isLoading ? <Preloader /> : null}
+            {props.isLoading ? <Preloader/> : null}
 
             <div className={styles.flex_wrap}>
 
@@ -28,9 +31,13 @@ export const Users = (props) => {
                     return (
                         <div className={styles.user}>
                             <div className={styles.col1}>
-                                <div className={styles.avatar_wrap}>
-                                    <img src={user.photos.small || noAvatar} alt=""/>
-                                </div>
+                                <NavLink
+                                    to={"/profile/" + user.id}>
+                                    <div className={styles.avatar_wrap}>
+                                        <img src={user.photos.small || noAvatar} alt=""/>
+                                    </div>
+                                </NavLink>
+
 
                                 {user.followed ?
                                     <button onClick={() => {
@@ -44,7 +51,10 @@ export const Users = (props) => {
                                 }
                             </div>
                             <div className={styles.col2}>
-                                <div className={styles.name}>{user.name}</div>
+                                <NavLink
+                                    to={"/profile/" + user.id}>
+                                    <div className={styles.name}>{user.name}</div>
+                                </NavLink>
                                 <div className={styles.status}>{user.status}</div>
                             </div>
                             <div className={styles.col3}>
