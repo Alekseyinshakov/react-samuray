@@ -4,6 +4,7 @@ import React from "react";
 import {Preloader} from "../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
 import axios from "axios";
+import {followAPI} from "../../api/api";
 
 export const Users = (props) => {
     // debugger;
@@ -42,9 +43,8 @@ export const Users = (props) => {
 
                                 {user.followed ?
                                     <button onClick={() => {
-                                        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,{withCredentials: true}).then(responce => {
-                                            console.log(responce)
-                                            if (responce.data.resultCode == 0) {
+                                        followAPI.unfollow(user.id).then(data => {
+                                            if (data.resultCode == 0) {
                                                 props.unfollow(user.id)
                                             }
                                         })
@@ -52,9 +52,8 @@ export const Users = (props) => {
                                     }} className={styles.followed}>unfollow</button>
                                     :
                                     <button onClick={() => {
-                                        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}, {withCredentials: true}).then(responce => {
-                                            console.log(responce)
-                                            if (responce.data.resultCode == 0) {
+                                        followAPI.follow(user.id).then(data => {
+                                            if (data.resultCode == 0) {
                                                 props.follow(user.id)
                                             }
                                         })
