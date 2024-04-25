@@ -15,7 +15,7 @@ class UsersContainerAPI extends React.Component {
 
     componentDidMount() {
         this.props.togglePreloader(true);
-                axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`).then(responce => {
+                axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`, {withCredentials: true}).then(responce => {
             this.props.togglePreloader(false);
             this.props.setUsers(responce.data.items);
             this.props.setTotalUsersCount(responce.data.totalCount)
@@ -25,7 +25,7 @@ class UsersContainerAPI extends React.Component {
     onPageChanged = (pageNumber) => {
         this.props.togglePreloader(true);
         this.props.setCurrentPage(pageNumber);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNumber}`).then(responce => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNumber}`, {withCredentials: true}).then(responce => {
             this.props.togglePreloader(false);
             this.props.setUsers(responce.data.items)
         })

@@ -3,6 +3,7 @@ import noAvatar from "./no-avatar.jpg";
 import React from "react";
 import {Preloader} from "../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 export const Users = (props) => {
     // debugger;
@@ -41,12 +42,23 @@ export const Users = (props) => {
 
                                 {user.followed ?
                                     <button onClick={() => {
+                                        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,{withCredentials: true}).then(responce => {
+                                            console.log(responce)
+                                            if (responce.data.resultCode == 0) {
+                                                props.unfollow(user.id)
+                                            }
+                                        })
 
-                                        props.unfollow(user.id)
-                                    }} className={styles.followed}>unfollow</button> :
+                                    }} className={styles.followed}>unfollow</button>
+                                    :
                                     <button onClick={() => {
+                                        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}, {withCredentials: true}).then(responce => {
+                                            console.log(responce)
+                                            if (responce.data.resultCode == 0) {
+                                                props.follow(user.id)
+                                            }
+                                        })
 
-                                        props.follow(user.id)
                                     }} className={styles.unfollowed}>follow</button>
                                 }
                             </div>
