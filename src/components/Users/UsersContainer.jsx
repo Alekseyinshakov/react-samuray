@@ -3,9 +3,9 @@ import {
     follow,
     setCurrentPage,
     setTotalUsersCount,
-    setUsers,
+    setUsers, toggleFollowingProgress,
     togglePreloader,
-    unfollow
+    unfollow,
 } from "../../Redux/users-reduser";
 import React from "react";
 import axios from "axios";
@@ -34,6 +34,7 @@ class UsersContainerAPI extends React.Component {
     }
 
     render() {
+
         return (
             <Users totalUsers={this.props.totalUsers}
                    pageSize={this.props.pageSize}
@@ -42,7 +43,9 @@ class UsersContainerAPI extends React.Component {
                    isLoading={this.props.isLoading}
                    onPageChanged={this.onPageChanged}
                    follow={this.props.follow}
-                   unfollow={this.props.unfollow}/>
+                   unfollow={this.props.unfollow}
+                   followingInProgress={this.props.followingInProgress}
+                   toggleFollowingProgress={this.props.toggleFollowingProgress}/>
         )
     }
 }
@@ -55,7 +58,8 @@ let mapStateToProps = (state) => {
         totalUsers: state.usersPage.totalUsers,
         pageSize: state.usersPage.pageSize,
         currentPage: state.usersPage.currentPage,
-        isLoading: state.usersPage.isLoading
+        isLoading: state.usersPage.isLoading,
+        followingInProgress: state.usersPage.followingInProgress
     }
 }
 
@@ -85,4 +89,4 @@ let mapStateToProps = (state) => {
 //     }
 // }
 export const UsersContainer = connect(mapStateToProps,
-    {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, togglePreloader})(UsersContainerAPI)
+    {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, togglePreloader, toggleFollowingProgress})(UsersContainerAPI)

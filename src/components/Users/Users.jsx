@@ -3,11 +3,9 @@ import noAvatar from "./no-avatar.jpg";
 import React from "react";
 import {Preloader} from "../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
-import axios from "axios";
 import {followAPI} from "../../api/api";
 
 export const Users = (props) => {
-    // debugger;
     let pagesCount = Math.ceil(props.totalUsers / props.pageSize);
     let pages = []
 
@@ -42,23 +40,27 @@ export const Users = (props) => {
 
 
                                 {user.followed ?
-                                    <button onClick={() => {
+                                    <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
+                                        props.toggleFollowingProgress(true, user.id);
                                         followAPI.unfollow(user.id).then(data => {
                                             if (data.resultCode == 0) {
                                                 props.unfollow(user.id)
                                             }
+                                            props.toggleFollowingProgress(false, user.id);
                                         })
 
-                                    }} className={styles.followed}>unfollow</button>
+                                    }} className={`${styles.followed} ${props.followingInProgress.some(id => id === user.id) ? styles.disabled : ""}`}>unfollow</button>
                                     :
-                                    <button onClick={() => {
+                                    <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
+                                        props.toggleFollowingProgress(true, user.id);
                                         followAPI.follow(user.id).then(data => {
                                             if (data.resultCode == 0) {
                                                 props.follow(user.id)
                                             }
+                                            props.toggleFollowingProgress(false, user.id);
                                         })
 
-                                    }} className={styles.unfollowed}>follow</button>
+                                    }} className={`${styles.unfollowed} ${props.followingInProgress.some(id => id === user.id) ? styles.disabled : ""}`}>follow</button>
                                 }
                             </div>
                             <div className={styles.col2}>
