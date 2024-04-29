@@ -5,7 +5,7 @@ import {
     toggleFollowingProgress,
     unfollowSuccess,
     follow,
-    unfollow
+    unfollow, setCurrentPage
 } from "../../Redux/users-reduser";
 import React from "react";
 import {Users} from "./Users";
@@ -19,16 +19,8 @@ class UsersContainerAPI extends React.Component {
     }
 
     onPageChanged = (pageNumber) => {
-
+        this.props.setCurrentPage(pageNumber);
         this.props.getUsers(this.props.pageSize, pageNumber)
-
-        // this.props.togglePreloader(true);
-        // this.props.setCurrentPage(pageNumber);
-        // usersAPI.getUsers(this.props.pageSize, pageNumber)
-        // .then(data => {
-        //     this.props.togglePreloader(false);
-        //     this.props.setUsers(data.items)
-        // })
     }
 
     render() {
@@ -63,4 +55,4 @@ let mapStateToProps = (state) => {
 
 
 export const UsersContainer = connect(mapStateToProps,
-    {followSuccess, unfollowSuccess, toggleFollowingProgress, getUsers, follow, unfollow})(UsersContainerAPI)
+    { setCurrentPage, getUsers, follow, unfollow })(UsersContainerAPI)
