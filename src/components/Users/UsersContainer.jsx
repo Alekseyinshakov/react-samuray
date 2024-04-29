@@ -1,36 +1,32 @@
 import {connect} from "react-redux";
 import {
     follow,
-    setCurrentPage,
-    setTotalUsersCount,
-    setUsers, toggleFollowingProgress,
-    togglePreloader,
+    getUsers,
+    toggleFollowingProgress,
     unfollow,
 } from "../../Redux/users-reduser";
 import React from "react";
-import axios from "axios";
 import {Users} from "./Users";
-import {usersAPI} from "../../api/api";
 
 class UsersContainerAPI extends React.Component {
 
     componentDidMount() {
-        this.props.togglePreloader(true);
-        usersAPI.getUsers(this.props.pageSize, this.props.currentPage).then(data => {
-            this.props.togglePreloader(false);
-            this.props.setUsers(data.items);
-            this.props.setTotalUsersCount(data.totalCount)
-        })
+
+        this.props.getUsers(this.props.pageSize, this.props.currentPage)
+
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.togglePreloader(true);
-        this.props.setCurrentPage(pageNumber);
-        usersAPI.getUsers(this.props.pageSize, pageNumber)
-        .then(data => {
-            this.props.togglePreloader(false);
-            this.props.setUsers(data.items)
-        })
+
+        this.props.getUsers(this.props.pageSize, pageNumber)
+
+        // this.props.togglePreloader(true);
+        // this.props.setCurrentPage(pageNumber);
+        // usersAPI.getUsers(this.props.pageSize, pageNumber)
+        // .then(data => {
+        //     this.props.togglePreloader(false);
+        //     this.props.setUsers(data.items)
+        // })
     }
 
     render() {
@@ -63,30 +59,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-// let mapDispatchToProps = (dispatch) => {
-//     return {
-//         follow: (userId) => {
-//
-//             dispatch(followCA(userId))
-//         },
-//         unfollow: (userId) => {
-//
-//             dispatch(unfollowCA(userId))
-//         },
-//         setUsers: (users) => {
-//             dispatch(setUsersCA(users))
-//         },
-//         setCurrentPage: (pageNumber) => {
-//             dispatch(setCurrentPageCA(pageNumber))
-//         },
-//         setTotalUsers: (totalUsersCount) => {
-//             dispatch(setTotalUserCountCA(totalUsersCount))
-//         },
-//         togglePreloader: (boolean) => {
-//             dispatch(togglePreloaderCA(boolean))
-//         }
-//
-//     }
-// }
+
 export const UsersContainer = connect(mapStateToProps,
-    {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, togglePreloader, toggleFollowingProgress})(UsersContainerAPI)
+    {follow, unfollow, toggleFollowingProgress, getUsers})(UsersContainerAPI)

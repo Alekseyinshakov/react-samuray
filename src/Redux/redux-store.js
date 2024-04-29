@@ -1,8 +1,9 @@
-import {combineReducers, legacy_createStore as createStore} from "redux";
+import {applyMiddleware, combineReducers, legacy_createStore as createStore} from "redux";
 import profileReducer from "./profile-reduser";
 import dialogsReducer from "./dialogs-reduser";
 import usersReduser from "./users-reduser";
 import authReduser from "./auth-reduser";
+import {thunk as thunkMiddleware} from 'redux-thunk'
 
 
 let reducers = combineReducers({
@@ -12,8 +13,6 @@ let reducers = combineReducers({
     auth: authReduser
 });
 
-let store = createStore(reducers);
+let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 export default store;
-
-// Второе,  когда из  store.js   копируете данные для initialState, то нужно скопировать без названия раздела.
