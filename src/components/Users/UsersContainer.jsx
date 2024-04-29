@@ -40,10 +40,7 @@ class UsersContainerAPI extends React.Component {
                    currentPage={this.props.currentPage}
                    isLoading={this.props.isLoading}
                    onPageChanged={this.onPageChanged}
-                   followSuccess={this.props.followSuccess}
-                   unfollowSuccess={this.props.unfollowSuccess}
                    followingInProgress={this.props.followingInProgress}
-                   toggleFollowingProgress={this.props.toggleFollowingProgress}
                    follow={this.props.follow}
                    unfollow={this.props.unfollow}
             />

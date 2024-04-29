@@ -2,8 +2,9 @@ import React from "react";
 import {connect} from "react-redux";
 import {Profile} from "./Profile";
 import axios from "axios";
-import {setUserProfile} from "../../Redux/profile-reduser";
+import {setProfile, setUserProfile} from "../../Redux/profile-reduser";
 import { useParams } from 'react-router-dom';
+import {profileAPI} from "../../api/api";
 
 export function withRouter(Children){
     return(props)=>{
@@ -16,10 +17,8 @@ export function withRouter(Children){
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.match.params.userId || 31064}`).then(responce => {
-            this.props.setUserProfile(responce.data)
-
+        profileAPI.getProfileData(this.props.match.params.userId || 31064).then(data => {
+            this.props.setUserProfile(data)
         })
     }
 

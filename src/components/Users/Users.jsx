@@ -3,7 +3,6 @@ import noAvatar from "./no-avatar.jpg";
 import React from "react";
 import {Preloader} from "../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
-import {followAPI} from "../../api/api";
 
 export const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsers / props.pageSize);
