@@ -6,7 +6,6 @@ import {Navigate} from "react-router-dom";
 export function Profile(props) {
 
 
-
     return (
         <div className={styles.content}>
 

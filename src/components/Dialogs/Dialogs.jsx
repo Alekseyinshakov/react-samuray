@@ -6,10 +6,6 @@ import {Navigate} from "react-router-dom";
 
 export function Dialogs(props) {
 
-    if(!props.isAuth) {
-        return <Navigate to="/login"/>;
-    }
-
     let dialogs= props.dialogsData.map(item => <DialogItem id={item.id} key={item.id} name={item.name}/>)
     let messages = props.messagesData.map(message => <Message isMy={message.my} key={message.id} text = {message.message}/>)
 
