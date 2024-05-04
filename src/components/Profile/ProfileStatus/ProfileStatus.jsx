@@ -3,7 +3,7 @@ import styles from "./ProfileStatus.module.scss"
 
 export class ProfileStatus extends React.Component {
     componentDidMount() {
-        this.props.getStatus()
+
     }
 
 
