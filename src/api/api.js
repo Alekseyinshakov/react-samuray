@@ -28,6 +28,9 @@ export const followAPI = {
 export const authAPI = {
     getAuthUserData() {
         return instance.get(`https://social-network.samuraijs.com/api/1.0/auth/me`,).then(responce => responce.data)
+    },
+    login(loginData) {
+        return instance.post('/auth/login', loginData).then(responce => responce.data)
     }
 }
 

@@ -1,6 +1,8 @@
 import { Field, reduxForm } from 'redux-form'
 import s from './Login.module.scss'
 import React from "react";
+import {connect} from "react-redux";
+import {loginThunkCreator} from "../../Redux/auth-reduser";
 
 let LoginForm = (props) => {
     return (
@@ -26,10 +28,13 @@ LoginForm = reduxForm({
     form: 'login'
 })(LoginForm)
 
-export const Login = (props) => {
+
+
+let Login = (props) => {
 
     const submit = values => {
-        console.log(values)
+        // console.log(values)
+        props.loginThunkCreator(values)
     }
 
     return (
@@ -40,3 +45,11 @@ export const Login = (props) => {
 
     )
 }
+
+let mapStateToProps = () => {
+
+}
+
+Login = connect(mapStateToProps, {loginThunkCreator})(Login)
+
+export {Login}

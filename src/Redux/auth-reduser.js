@@ -44,6 +44,20 @@ export const getAuth = () => {
     }
 }
 
+export const loginThunkCreator = (loginData) => {
+    return (dispatch) => {
+        authAPI.login(loginData).then(responce => {
+            if (responce.resultCode === 0) {
+                console.log('ok')
+                console.log(responce)
+            } else {
+                console.log('not ok')
+                console.log(responce)
+            }
+        })
+    }
+}
+
 
 
 export default authReducer;
