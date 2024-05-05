@@ -1,6 +1,5 @@
 import {Dialogs} from "./Dialogs";
 import {connect} from "react-redux";
-import {Navigate} from "react-router-dom";
 import React from "react";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";

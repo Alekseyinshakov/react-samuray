@@ -1,21 +1,30 @@
 import styles from "./NewMessage.module.scss";
 import React from "react";
+import {Field, reduxForm} from "redux-form";
 
-export function NewMessage(props) {
+let NewMessageForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit} className={styles.container}>
+            <Field component="textarea" name="newMessageText" rows="3" />
+            <button>Send</button>
+        </form>
+    )
+}
 
-    let newMessageTextarea = React.createRef()
-    function addMessage() {
-        props.addMessage()
-    }
+NewMessageForm = reduxForm({
+    form: 'newMessageForm'
+})(NewMessageForm)
 
-    function onChangeMessage() {
-        props.updateNewMessageText(newMessageTextarea.current.value)
+let NewMessage = (props) => {
+
+    const submit = values => {
+        // console.log(values)
+        props.addMessage(values.newMessageText);
     }
 
     return (
-        <div className={styles.container}>
-            <textarea onChange={onChangeMessage} value={props.newMessageText} ref={newMessageTextarea} rows="3"></textarea>
-            <button onClick={addMessage} >Send</button>
-        </div>
+        <NewMessageForm onSubmit={submit} />
     )
 }
+
+export {NewMessage}
