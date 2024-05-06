@@ -1,13 +1,18 @@
 import styles from "./MyPosts.module.scss";
 import {Post} from "./Post/Post";
 import React from "react";
-import {Field, reduxForm} from "redux-form";
+import {Field, reduxForm, reset} from "redux-form";
+import {maxLengthCreator, required} from "../../../utils/validators/validators";
+import {Textarea} from "../../common/FormsControls/FormsControls";
 
+const maxLength10 = maxLengthCreator(10)
 
 let ProfilePostForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={styles.new_post}>
-            <Field component="textarea" name="newPostText" className={styles.new_post_input} />
+            <Field placeholder={"POST MESSAGE"} component={Textarea} name="newPostText"
+            validate={[required, maxLength10]}
+            />
             <button className={styles.send_new_post}>Send</button>
         </form>
     )
@@ -19,12 +24,11 @@ ProfilePostForm = reduxForm({
 
 
 export function MyPosts(props) {
-    console.log(props)
 
     let posts = props.posts.map(post => <Post text={post.message} key={post.id} likes={post.likes}/>)
 
     const submit = values => {
-
+        props.reset()
         props.addPost(values.newPostText)
     }
 
