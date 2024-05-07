@@ -10,7 +10,12 @@ export function Header(props){
                 alt="" className="logo"/>
             <div className={styles.kabzda}>React - кабзда как просто</div>
             <div>
-                {props.isAuth ? props.login : <NavLink to="/login">Sign in</NavLink>}
+                {props.isAuth ?
+                    <div>
+                        <div>{props.login}</div>
+                        <button onClick={props.logoutThunkCreator}>Logout</button>
+                    </div>
+                    : <NavLink to="/login">Sign in</NavLink>}
 
             </div>
         </header>

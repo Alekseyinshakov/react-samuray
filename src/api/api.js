@@ -29,8 +29,11 @@ export const authAPI = {
     getAuthUserData() {
         return instance.get(`https://social-network.samuraijs.com/api/1.0/auth/me`,).then(responce => responce.data)
     },
-    login(loginData) {
-        return instance.post('/auth/login', loginData).then(responce => responce.data)
+    login(email, password, rememberMe = false) {
+        return instance.post('/auth/login', {email, password, rememberMe}).then(responce => responce.data)
+    },
+    logout() {
+        return instance.delete('/auth/login' ).then(responce => responce.data)
     }
 }
 
