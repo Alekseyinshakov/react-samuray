@@ -13,8 +13,16 @@ import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-        this.props.setProfile(this.props.match.params.userId);
-        this.props.getStatus(this.props.match.params.userId);
+        let userId = this.props.match.params.userId;
+        if (!userId) {
+            userId = this.props.myId;
+            if (!userId) {
+                debugger;
+                window.location.href = '/login';
+            }
+        }
+        this.props.setProfile(userId);
+        this.props.getStatus(userId);
     }
 
 
@@ -29,7 +37,8 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
-        status: state.profilePage.status
+        status: state.profilePage.status,
+        myId: state.auth.userId
     }
 }
 

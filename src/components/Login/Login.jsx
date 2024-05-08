@@ -23,6 +23,7 @@ let LoginForm = (props) => {
             <div>
                 <button className={s.button}>Login</button>
             </div>
+            { props.error && <div className={s.errorMessage}>{props.error}</div>}
         </form>
     )
 }
