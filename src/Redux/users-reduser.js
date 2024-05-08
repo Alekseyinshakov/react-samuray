@@ -126,7 +126,7 @@ export function toggleFollowingProgress(boolean, userId) {
     }
 }
 
-export const getUsers = (pageSize, currentPage) => {
+export const requestUsers = (pageSize, currentPage) => {
     return (dispatch) => {
         dispatch(togglePreloader(true));
         usersAPI.getUsers(pageSize, currentPage).then(data => {
