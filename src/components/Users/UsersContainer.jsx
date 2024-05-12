@@ -11,7 +11,9 @@ import {
     getIsLoading,
     getPageSize,
     getTotalUsers,
-    getUsers
+    getUsers,
+    getUsersSelector,
+    getUsersSuperSelector
 } from "../../Redux/users-selectors";
 
 class UsersContainerAPI extends React.Component {

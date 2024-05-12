@@ -1,12 +1,17 @@
 import {createSelector} from "reselect";
 
-export const getUsers = (state) => {
-    return state.usersPage.users.filter(u => true)
+export const getUsersSelector = (state) => {
+    return state.usersPage.users
 }
 
-export const getUsersSuper = createSelector(() => {
-    
+
+
+
+export const getUsers = createSelector(getUsersSelector, (users) => {
+    return users.filter(u => true)
 })
+
+
 
 export const getTotalUsers = (state) => {
     return state.usersPage.totalUsers
