@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./ProfileStatus.module.scss"
 
 export const ProfileStatusWithHooks = (props) => {
@@ -6,6 +6,11 @@ export const ProfileStatusWithHooks = (props) => {
     let [editeMode, setEditeMode] = useState(false)
 
     let [status, setStatus] = useState(props.status)
+
+    useEffect(() => {
+        setStatus(props.status)
+    }, [props.status]);
+
     let activateEditeMode = () => {
         setEditeMode(true)
     }
