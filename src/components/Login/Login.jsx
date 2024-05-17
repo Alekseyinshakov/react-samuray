@@ -7,9 +7,9 @@ import {InputC} from '../common/FormsControls/FormsControls'
 import {required} from "../../utils/validators/validators";
 import {Navigate} from "react-router-dom";
 
-let LoginForm = (props) => {
+let LoginForm = ({handleSubmit, error}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div>
                 <Field className={s.login} name="email" component={InputC} placeholder="Email" validate={[required]} />
             </div>
@@ -23,7 +23,7 @@ let LoginForm = (props) => {
             <div>
                 <button className={s.button}>Login</button>
             </div>
-            { props.error && <div className={s.errorMessage}>{props.error}</div>}
+            { error && <div className={s.errorMessage}>{error}</div>}
         </form>
     )
 }

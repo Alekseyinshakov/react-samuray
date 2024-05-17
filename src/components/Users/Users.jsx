@@ -3,25 +3,29 @@ import noAvatar from "./no-avatar.jpg";
 import React from "react";
 import {Preloader} from "../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
+import {Paginator} from "../common/Paginator/Paginator";
 
 export const Users = (props) => {
-    let pagesCount = Math.ceil(props.totalUsers / props.pageSize);
-    let pages = []
-
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
 
     return (
         <div className={styles.wrap}>
-            <div className={styles.pagination}>
-                {pages.map(item => {
-                    return <span onClick={(e) => {
-                        props.onPageChanged(item)
-                    }} className={item === props.currentPage && styles.currentPage}>{item}</span>
-                })}
 
-            </div>
+            <Paginator totalUsers = {props.totalUsers}
+                       pageSize={props.pageSize}
+                       onPageChanged={props.onPageChanged}
+                       currentPage={props.currentPage}
+            />
+
+
+            {/*<div className={styles.pagination}>*/}
+            {/*    {pages.map(item => {*/}
+            {/*        return <span onClick={(e) => {*/}
+            {/*            props.onPageChanged(item)*/}
+            {/*        }} className={item === props.currentPage && styles.currentPage}>{item}</span>*/}
+            {/*    })}*/}
+
+            {/*</div>*/}
+
             {props.isLoading ? <Preloader/> : null}
 
             <div className={styles.flex_wrap}>

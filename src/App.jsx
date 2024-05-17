@@ -10,7 +10,6 @@ import {Login} from "./components/Login/Login";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {withRouter} from "./hoc/withRouter";
-import {getAuth} from "./Redux/auth-reduser";
 import {initializeApp} from "./Redux/app-reduser";
 import {Preloader} from "./components/common/Preloader/Preloader";
 
@@ -25,7 +24,7 @@ class App extends React.Component {
             return <Preloader />
         }
         return (
-            <BrowserRouter>
+
                 <div className="container">
                     <HeaderContainer/>
                     <Navbar/>
@@ -38,7 +37,7 @@ class App extends React.Component {
                         <Route path="/login" element={<Login  />}/>
                     </Routes>
                 </div>
-            </BrowserRouter>
+
         );
     }
 
