@@ -10,10 +10,10 @@ export class ProfileStatus extends React.Component {
 
     state = {
         editeMode: false,
-
+        status: this.props.status
     }
     activateEditMode = () => {
-        this.setState({status: this.props.status})
+        // this.setState({status: this.props.status})
         this.setState({
             editeMode: true
         })
@@ -32,9 +32,9 @@ export class ProfileStatus extends React.Component {
         return (
             <div className={styles.wrapper}>
                 {!this.state.editeMode &&
-                    <div onDoubleClick = {this.activateEditMode} className={styles.status}>
+                    <span onDoubleClick = {this.activateEditMode} className={styles.status}>
                         {this.props.status || "no status"}
-                    </div>}
+                    </span>}
                 {this.state.editeMode &&
                     <div>
                         <input onChange={this.onStatusChange} onBlur={this.deactivateEditMode} autoFocus={true} value={this.state.status} type="text"/>
