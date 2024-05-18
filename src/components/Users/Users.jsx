@@ -14,6 +14,7 @@ export const Users = (props) => {
                        pageSize={props.pageSize}
                        onPageChanged={props.onPageChanged}
                        currentPage={props.currentPage}
+                       portionSize={20}
             />
 
 
