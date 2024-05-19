@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {HashRouter, Routes, Route} from "react-router-dom";
 import React, {lazy, Suspense} from "react";
 import {Navbar} from "./components/Navbar/Navbar";
 
@@ -29,9 +29,9 @@ class App extends React.Component {
 
     render() {
 
-        // if (!this.props.initialized) {
-        //     return <Preloader />
-        // }
+        if (!this.props.initialized) {
+            return <Preloader />
+        }
         return (
 
                 <div className="container">
@@ -70,11 +70,11 @@ let AppContainer = compose(
 
 export const SamuraiJSApp = () => {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Provider store={store}>
                 <AppContainer/>
             </Provider>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 
