@@ -33,7 +33,6 @@ export const MyPosts = props => {
         props.reset()
         props.addPost(values.newPostText)
     }
-    console.log(1)
     return (
         <div className={styles.wall}>
             <div className={styles.wall_title}>

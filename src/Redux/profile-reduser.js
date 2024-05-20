@@ -106,6 +106,11 @@ export const getStatus = (userId) => async (dispatch) => {
             dispatch(setStatus(data))
     }
 
+export const savePhoto = (file) => async (dispatch) => {
+    let data = await profileAPI.savePhoto(file);
+    // dispatch(setStatus(data))
+}
+
 
 export const updateStatus = (status) => {
     return (dispatch) => {

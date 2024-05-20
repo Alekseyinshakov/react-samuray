@@ -13,7 +13,7 @@ export function Profile(props) {
                 <img src="https://cdn.profile.ru/wp-content/uploads/2021/03/pejzazh-na-planete-Mars.jpg" alt=""/>
                 </div>
             <ProfileStatusWithHooks status={props.status} getStatus = {props.getStatus} updateStatus={props.updateStatus}/>
-            <ProfileInfo profile={props.profile} />
+            <ProfileInfo savePhoto = {props.savePhoto} isOwner={props.isOwner} profile={props.profile} />
             <MyPostsContainer store = {props.store} />
         </div>
     )
