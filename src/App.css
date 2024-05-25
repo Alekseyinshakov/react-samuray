@@ -19,6 +19,8 @@ a{
     font-size: 20px;
 }
 
-
+[type="text"] {
+    background-color: #fff;
+}
 
 
